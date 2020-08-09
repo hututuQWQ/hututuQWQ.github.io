@@ -6,11 +6,11 @@ menu:
 
 # SubNav
 subnav:
-  github: "#"
-  weibo: "#"
-  rss: "#"
-  zhihu: "#"
-  #qq: "#"
+  #github: "#"
+  #weibo: "#"
+  #rss: "#"
+  #zhihu: "#"
+  qq: "https://user.qzone.qq.com/962950733/infocenter"
   #weixin: "#"
   #jianshu: "#"
   #douban: "#"
