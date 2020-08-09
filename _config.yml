@@ -44,10 +44,11 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+# 代码高亮
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
