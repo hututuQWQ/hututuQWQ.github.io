@@ -18,13 +18,29 @@
 				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
 	        <%}%>
 			</ul>
+			
 		</nav>
+
 		<nav class="header-smart-menu">
+
+			<nav>
+				总文章数 <%=site.posts.length%>
+			</nav>
+			
+			<br>
+			
+			<nav>
+				总字数 <span class="post-count"><%= totalcount(site, '0,0.0a') %></span>
+			</nav>
+			
+			<br>
+
     		<% for (var i in theme.smart_menu){ %>
     			<% if(theme.smart_menu[i]){ %>
     			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
     			<% } %>
-            <%}%>
+			<%}%>
+			
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
