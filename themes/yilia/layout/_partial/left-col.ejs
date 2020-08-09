@@ -1,22 +1,23 @@
 <% var defaultBg = '#4d4d4d'; %>
-<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
+<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>">
+</div>
 <div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="<%=theme.root%>" class="profilepic">
-			<img src="<%=theme.avatar%>" class="js-avatar">
-		</a>
-		<hgroup>
-		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
-		</hgroup>
-		<% if (theme.subtitle){ %>
-		<p class="header-subtitle"><%=theme.subtitle%></p>
-		<%}%>
+  <header id="header" class="inner">
+    <a href="<%=theme.root%>" class="profilepic">
+      <img src="<%=theme.avatar%>" class="js-avatar">
+    </a>
+    <hgroup>
+      <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
+    </hgroup>
+    <% if (theme.subtitle){ %>
+    <p class="header-subtitle"><%=theme.subtitle%></p>
+    <%}%>
 
 		<nav class="header-menu">
 			<ul>
 			<% for (var i in theme.menu){ %>
-				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
-	        <%}%>
+    <li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+    <%}%>
 			</ul>
 			
 		</nav>
@@ -25,28 +26,99 @@
 
 			<nav>
 				总文章数 <%=site.posts.length%>
-			</nav>
-			
-			<br>
-			
-			<nav>
-				总字数 <span class="post-count"><%= totalcount(site, '0,0.0a') %></span>
-			</nav>
-			
-			<br>
+    </nav>
 
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-			<%}%>
+    <br>
+
+    <nav>
+      总字数 <span class="post-count"><%= totalcount(site, '0,0.0a') %></span>
+    </nav>
+
+    <br>
+
+    <script type='text/Javascript' src='https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js'></script>
+    <script type='text/Javascript'>
+      $(document).ready(function () {
+        $.ajax({
+                dataType: "json",
+                url: "https://codeforces.com/api/user.info?handles=sickchicken",
+                cache: false, 
+                success: function (response) {
+                    x = response.result[0].rating;
+                    y = response.result[0].rank;
+                    z = y + ' ' + x;
+                    z = z.toUpperCase();
+                    document.getElementById("info").innerHTML=z;
+                }
+        })
+                
+    });                
+	</script>
+
+	<style>
+		.cf
+		{
+			height: 105px;
+			width: 200px;
+			font-size: 10px;
+			margin: auto;
+		}
+		.cf .logo
+		{
+			font-size: 12px;
+			line-height: 35px;
+			height: 35px;
+			width: 200px;
+			color: white;
+			background-color: rgb(197, 197, 197);
+		}
+		.cf .name
+		{
+			font-size: 12px;
+			line-height: 35px;
+			height: 35px;
+			width: 200px;
+			color: white;
+			background-color: rgb(85, 85, 85);
+		}
+		
+		.cf .score
+		{
+			font-size: 12px;
+			line-height: 35px;
+			height: 35px;
+			width: 200px;
+			color: white;
+			background-color: rgb(0, 126, 198);
+		}
+	</style>
+
+	<div class="cf">
+		<div class="logo">
+			CODEFORCES
+		</div>
+		<div class="name">
+			sickchicken
+		</div>
+		<div id="info" class="score">
+		</div>
+	</div>
+	
+	<br>
+
+    <% for (var i in theme.smart_menu){ %>
+    <% if(theme.smart_menu[i]){ %>
+    <a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
+    <% } %>
+    <%}%>
 			
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				<% for (var i in theme.subnav){ %>
-					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
-		        <%}%>
+    <a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i
+        class="icon-<%= i %>"></i></a>
+    <%}%>
 			</div>
 		</nav>
 	</header>		
